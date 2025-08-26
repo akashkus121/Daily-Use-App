@@ -1,0 +1,25 @@
+﻿@model Daily_Use_App.Models.MoodEntry
+
+<h2>Create Mood Entry</h2>
+
+<form asp-action="Create" method="post">
+    <div class="form-group">
+        <label asp-for="Score"></label>
+        <input asp-for="Score" type="number" min="1" max="5" class="form-control" />
+        <span asp-validation-for="Score" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Note"></label>
+        <textarea asp-for="Note" class="form-control"></textarea>
+    </div>
+    <div class="form-group">
+        <label asp-for="CheckedAt"></label>
+        <input asp-for="CheckedAt" type="date" class="form-control" />
+    </div>
+    <div class="form-group">
+        <label asp-for="UserId">User</label>
+        <input asp-for="UserId" class="form-control" />
+    </div>
+    <button type="submit" class="btn btn-success">Save</button>
+    <a asp-action="Index" class="btn btn-secondary">Back</a>
+</form>

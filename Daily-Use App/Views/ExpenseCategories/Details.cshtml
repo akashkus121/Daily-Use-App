@@ -1,0 +1,12 @@
+﻿@model Daily_Use_App.Models.ExpenseCategory
+
+<h2>Category Details</h2>
+
+<div>
+    <strong>Name:</strong> @Model.Name <br />
+    <strong>Icon:</strong> @Model.Icon <br />
+    <strong>UserId:</strong> @Model.UserId <br />
+</div>
+
+<a asp-action="Edit" asp-route-id="@Model.Id" class="btn btn-warning">Edit</a>
+<a asp-action="Index" class="btn btn-secondary">Back</a>

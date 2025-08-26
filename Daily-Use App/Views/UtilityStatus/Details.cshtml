@@ -1,0 +1,13 @@
+﻿@model Daily_Use_App.Models.UtilityStatus
+
+<h2>Utility Status Details</h2>
+
+<div>
+    <strong>Type:</strong> @Model.Type <br />
+    <strong>Status:</strong> @Model.Status <br />
+    <strong>Location:</strong> @Model.Location <br />
+    <strong>Noted At:</strong> @Model.NotedAt.ToShortDateString() <br />
+    <strong>Note:</strong> @Model.Note <br />
+</div>
+
+<a asp-action="Index" class="btn btn-secondary">Back</a>

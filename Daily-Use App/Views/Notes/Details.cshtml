@@ -1,0 +1,15 @@
+﻿@model Daily_Use_App.Models.Note
+
+<h2>Note Details</h2>
+
+<div>
+    <strong>Title:</strong> @Model.Title <br />
+    <strong>Content:</strong> @Model.Content <br />
+    <strong>Pinned:</strong> @(Model.IsPinned ? "Yes" : "No") <br />
+    <strong>Created:</strong> @Model.CreatedAt <br />
+    <strong>Updated:</strong> @Model.UpdatedAt?.ToString() <br />
+    <strong>User:</strong> @Model.User?.Id <br />
+</div>
+
+<a asp-action="Edit" asp-route-id="@Model.Id" class="btn btn-warning">Edit</a>
+<a asp-action="Index" class="btn btn-secondary">Back</a>
