@@ -9,9 +9,18 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllersWithViews();
 
 
+var conn = builder.Configuration.GetConnectionString("DefaultConnection");
 builder.Services.AddDbContext<AppDbContext>(options =>
-options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"))
-);
+{
+    if (!string.IsNullOrWhiteSpace(conn))
+    {
+        options.UseSqlServer(conn);
+    }
+    else
+    {
+        options.UseSqlite("Data Source=dailyuse.db");
+    }
+});
 
 
 builder.Services.AddScoped<IWeatherService, DummyWeatherService>(); // replace with real API later
