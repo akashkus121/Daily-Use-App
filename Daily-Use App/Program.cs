@@ -7,6 +7,7 @@ var builder = WebApplication.CreateBuilder(args);
 
 
 builder.Services.AddControllersWithViews();
+builder.Services.AddSession();
 
 
 var conn = builder.Configuration.GetConnectionString("DefaultConnection");
@@ -40,6 +41,7 @@ if (!app.Environment.IsDevelopment())
 app.UseHttpsRedirection();
 app.UseStaticFiles();
 app.UseRouting();
+app.UseSession();
 
 
 app.MapControllerRoute(

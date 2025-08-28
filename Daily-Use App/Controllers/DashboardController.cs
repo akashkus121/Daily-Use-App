@@ -22,21 +22,14 @@ namespace Daily_Use_App.Controllers
 
         public async Task<IActionResult> Index()
         {
-            // Ensure at least one user exists. If none, create a default user.
-            if (!await _db.Users.AnyAsync())
+            var userId = HttpContext.Session.GetInt32("UserId");
+            if (userId is null)
             {
-                var defaultUser = new User
-                {
-                    Username = "default",
-                    PasswordHash = "",
-                    Role = "User"
-                };
-                _db.Users.Add(defaultUser);
-                await _db.SaveChangesAsync();
+                return RedirectToAction("Login", "Auth");
             }
 
             var today = DateTime.UtcNow.Date;
-            var firstUser = await _db.Users.OrderBy(u => u.Id).FirstAsync();
+            var firstUser = await _db.Users.FirstAsync(u => u.Id == userId.Value);
 
             var todayMood = await _db.MoodEntries
                 .Where(m => m.UserId == firstUser.Id && m.CheckedAt.Date == today)

@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="utf-8" />
@@ -10,6 +10,24 @@
 </head>
 <body>
    
+    <nav class="navbar navbar-expand navbar-light bg-light mb-3">
+        <div class="container">
+            <a class="navbar-brand" asp-controller="Dashboard" asp-action="Index">Daily Use</a>
+            <div class="navbar-nav">
+                <a class="nav-link" asp-controller="Dashboard" asp-action="Index">Dashboard</a>
+                <a class="nav-link" asp-controller="Expenses" asp-action="Index">Expenses</a>
+                <a class="nav-link" asp-controller="MoodEntries" asp-action="Index">Mood</a>
+                <a class="nav-link" asp-controller="UtilityStatus" asp-action="Index">Utilities</a>
+                <a class="nav-link" asp-controller="Notes" asp-action="Index">Notes</a>
+            </div>
+            <div class="ms-auto">
+                <a class="btn btn-sm btn-outline-primary" asp-controller="Auth" asp-action="Login">Login</a>
+                <a class="btn btn-sm btn-outline-secondary" asp-controller="Auth" asp-action="Register">Register</a>
+                <a class="btn btn-sm btn-outline-danger" asp-controller="Auth" asp-action="Logout">Logout</a>
+            </div>
+        </div>
+    </nav>
+
     <div class="container">
         <main role="main" class="pb-3">
             @RenderBody()
