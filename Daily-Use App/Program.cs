@@ -15,6 +15,7 @@ options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnectio
 
 
 builder.Services.AddScoped<IWeatherService, DummyWeatherService>(); // replace with real API later
+builder.Services.AddScoped<ISuggestionService, SimpleSuggestionService>();
 
 
 var app = builder.Build();
