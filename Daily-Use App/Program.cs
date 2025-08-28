@@ -1,5 +1,6 @@
 using Daily_Use_App.Data;
 using Daily_Use_App.Services;
+using Microsoft.EntityFrameworkCore;
 
 
 var builder = WebApplication.CreateBuilder(args);
