@@ -1,4 +1,4 @@
-﻿using Daily_Use_App.Models;
+using Daily_Use_App.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Daily_Use_App.Data;
@@ -17,9 +17,17 @@ namespace Daily_Use_App.Controllers
         // GET: UtilityStatus
         public async Task<IActionResult> Index()
         {
-            var statuses = await _context.UtilityStatuses
-                                         .Include(u => u.User)
-                                         .ToListAsync();
+            var userId = HttpContext.Session.GetInt32("UserId");
+            if (userId is null) return RedirectToAction("Login", "Auth");
+
+            var user = await _context.Users.FirstAsync(u => u.Id == userId.Value);
+
+            IQueryable<UtilityStatus> query = _context.UtilityStatuses.Include(u => u.User);
+            if (!string.IsNullOrWhiteSpace(user.Location))
+            {
+                query = query.Where(u => u.Location == user.Location);
+            }
+            var statuses = await query.ToListAsync();
             return View(statuses);
         }
 

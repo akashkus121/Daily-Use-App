@@ -1,4 +1,4 @@
-﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations;
 
 namespace Daily_Use_App.Models
 {
@@ -8,6 +8,7 @@ namespace Daily_Use_App.Models
         [Required, MaxLength(100)] public string Username { get; set; } = string.Empty;
         [Required, MaxLength(256)] public string PasswordHash { get; set; } = string.Empty;
         [Required, MaxLength(20)] public string Role { get; set; } = "User";
+        [MaxLength(100)] public string? Location { get; set; }
         public DateTime CreatedAt { get; set; } = DateTime.UtcNow;
     }
 }

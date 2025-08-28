@@ -1,0 +1,25 @@
+@{
+    ViewData["Title"] = "Register";
+}
+
+<h2>Register</h2>
+
+<form asp-action="Register" method="post">
+    <div class="mb-3">
+        <label class="form-label">Username</label>
+        <input class="form-control" name="username" />
+    </div>
+    <div class="mb-3">
+        <label class="form-label">Password</label>
+        <input class="form-control" name="password" type="password" />
+    </div>
+    <div class="mb-3">
+        <label class="form-label">Location</label>
+        <input class="form-control" name="location" placeholder="City/Area" />
+    </div>
+    <button type="submit" class="btn btn-primary">Create Account</button>
+    <a asp-action="Login" class="btn btn-link">Back to Login</a>
+    <div class="text-danger">@Html.ValidationSummary()</div>
+    @Html.AntiForgeryToken()
+</form>
+
