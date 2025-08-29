@@ -13,6 +13,11 @@
         <label class="form-label">Password</label>
         <input class="form-control" name="password" type="password" />
     </div>
+    <div class="mb-3">
+        <label class="form-label">Location (City/Area)</label>
+        <input class="form-control" name="location" />
+        <small class="text-muted">If your account has no location yet, this will set it.</small>
+    </div>
     <button type="submit" class="btn btn-primary">Login</button>
     <a asp-action="Register" class="btn btn-link">Register</a>
     <div class="text-danger">@Html.ValidationSummary()</div>

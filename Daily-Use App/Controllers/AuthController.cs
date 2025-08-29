@@ -22,13 +22,19 @@ namespace Daily_Use_App.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Login(string username, string password)
+        public async Task<IActionResult> Login(string username, string password, string? location)
         {
             var user = await _db.Users.FirstOrDefaultAsync(u => u.Username == username);
             if (user == null || user.PasswordHash != password)
             {
                 ModelState.AddModelError(string.Empty, "Invalid credentials");
                 return View();
+            }
+
+            if (string.IsNullOrWhiteSpace(user.Location) && !string.IsNullOrWhiteSpace(location))
+            {
+                user.Location = location;
+                await _db.SaveChangesAsync();
             }
 
             HttpContext.Session.SetInt32("UserId", user.Id);
